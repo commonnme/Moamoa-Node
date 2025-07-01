@@ -59,7 +59,7 @@ src/
 
 - [타입] 간단한 설명
 
-```less
+```bash
 [기능] feat: 로그인 API 구현
 [버그] fix: 응답 코드 오류 수정
 [문서] docs: README 업데이트
@@ -67,7 +67,7 @@ src/
 
 ### 타입 분류
 
-```less
+```bash
 feat: 새로운 기능 추가
 fix: 버그 수정
 docs: 문서 수정
