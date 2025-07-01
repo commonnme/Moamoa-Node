@@ -1,5 +1,5 @@
 name: "🐛 Bug"
-description: "버그를 발견했을 때 사용해주세요"
+description: "버그 발견"
 title: "[BUG] "
 labels: ["bug"]
 body:
