@@ -1,4 +1,4 @@
-# 🎁 Moamoa 팀 협업 가이드
+# 🎁 Moamoa back-end 팀 협업 가이드
 
 > 생일 선물 공동 구매 플랫폼
 > 
@@ -6,12 +6,54 @@
 > 마음을 모아 기쁨을 나누는 서비스
 > 
 
+## 🛠️ 기술 스택
+
+### Backend
+
+- Runtime: Node.js 18+
+- Framework: Express.js 5.x
+- Database: MySQL + Prisma ORM
+- Authentication: JWT + Passport.js
+- Documentation: Swagger
+- Security: Helmet, CORS
+
+## **🚀 시작하기**
+
+### **환경 설정**
+
+1. 레포지토리 클론
+
+```bash
+git clone https://github.com/UMC-8th-Moamoa/back-end.git
+cd back-end
+```
+
+1. 의존성 설치
+
+```bash
+npm install
+```
+
+1. 환경 변수 설정
+
+```bash
+# .env.development 파일 생성
+API_BASE_URL=http://localhost:3000
+DATABASE_URL=mysql://root:password@localhost:3306/moamoa_dev
+```
+
+1. 개발 서버 실행
+
+```bash
+npm run dev
+```
+
 ## 🌿 Git 브랜치 전략
 
 | 브랜치 | 용도 | 병합대상 | 설명 |
 | --- | --- | --- | --- |
 | `main` | 배포용 안전 버전 | - | 실제 서비스에 배포되는 안정화된 코드 |
-| `dev` | 개발 통합 브랜 | `main` | 모든 기능이 통합되어 테스트되는 브랜치 |
+| `dev` | 개발 통합 브랜치 | `main` | 모든 기능이 통합되어 테스트되는 브랜치 |
 | `feat/기능명` | 기능 개발 브랜치 | `dev` | 새로운 기능을 개발하는 브랜치 |
 - PR은 `feat/*` → `develop`, 이후 QA 완료 시 `develop` → `main`
 
@@ -29,16 +71,24 @@ feat/group-management    # 선물 그룹 관리
 ## 📁 프로젝트 구조
 
 ```bash
-src/
-├── controllers/          # 요청 처리 핸들러
-├── services/             # 핵심 비즈니스 로직
-├── repositories/         # 데이터 접근 계층
-├── dtos/                 # 데이터 전송 객체
-├── middlewares/          # 인증, 오류 처리 등
-├── routes/               # API 라우팅
-├── config/               # 환경설정, Swagger, Passport 등
-├── utils/                # 유틸리티 함수
-└── app.js              # 메인 애플리케이션 파일
+moamoa-back-end/
+├── prisma/                         # Prisma 설정
+│   └── schema.prisma               # 데이터베이스 스키마
+├── src/
+│   ├── controllers/                # 요청 처리 핸들러
+│   ├── services/                   # 핵심 비즈니스 로직
+│   ├── repositories/               # 데이터 접근 계층
+│   ├── dtos/                       # 데이터 전송 객체
+│   ├── middlewares/                # 미들웨어 / 인증, 오류 처리 등
+│   ├── routes/                     # API 라우팅
+│   ├── utils/                      # 유틸리티 함수
+│   └── config/                     # 환경설정, Swagger, Passport 등
+├── app.js                          # Express 앱 설정
+├── server.js                       # 메인 서버 진입점
+├── passport.js                     # Passport 전용 서버
+├── .gitignore
+├── package.json                    # 의존성 및 스크립트
+└── package-lock.json
 ```
 
 ## 📝 코드 컨벤션
@@ -130,3 +180,7 @@ git pull origin 브랜치명
 # 로컬 변경사항을 원격에 푸시
 git push origin 브랜치명
 ```
+
+### 서버 아키텍쳐
+<img width="649" height="785" alt="image" src="https://github.com/user-attachments/assets/6d66242c-3ed6-401e-ae3c-8b2b09243fd2" />
+
